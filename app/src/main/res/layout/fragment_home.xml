@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:gravity="center"
+            android:textSize="50dp"/>
+
+
+        <EditText
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_mail_white_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_lock_black_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cred"
+            android:textColor="@color/cwhite"
+            android:paddingRight="20dp"
+            android:text="Login"
+            android:drawableRight="@drawable/ic_send_black_24dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_btn_cred_stroke"
+                android:paddingRight="20dp"
+                android:text="Register"
+                android:drawableRight="@drawable/ic_account_circle_black_24dp"/>
+
+            <Button
+                android:layout_marginLeft="20dp"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_btn_cyellow_stroke"
+                android:paddingRight="20dp"
+                android:text="Gmail"
+                android:drawableRight="@drawable/ic_mail_yellow_24dp"/>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
