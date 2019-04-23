@@ -6,18 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="50dp"
-       android:orientation="horizontal"
-       android:background="@color/colorPrimary"
-       android:layout_gravity="bottom|end">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="">
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:background="@color/cgray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginTop="681dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/home_btn"
+            android:background="@drawable/round_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"/>
+            android:layout_gravity=""
+            android:drawableLeft="@drawable/ic_home_black_24dp"
+            android:text="Home"
+            android:layout_marginRight="30dp"/>
 
-   </LinearLayout>
+        <Button
+            android:id="@+id/map_btn"
+            android:background="@drawable/round_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity=""
+            android:text="Map"
+            android:drawableLeft="@drawable/ic_map_black_24dp"
+            android:layout_marginRight="30dp"/>
+        <Button
+            android:id="@+id/about_btn"
+            android:background="@drawable/round_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity=""
+            android:text="About Us"
+            android:drawableLeft="@drawable/ic_info_black_24dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
