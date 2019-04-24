@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.HomeFragment">
+    android:orientation="vertical"
+    tools:context=".RegesterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="Sign up"
             android:gravity="center"
             android:textSize="50dp"/>
 
@@ -45,47 +47,41 @@
             android:paddingRight="20dp"
             android:paddingLeft="20dp"/>
 
+        <EditText
+            android:id="@+id/confirm_password_field"
+            android:layout_marginTop="15dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:drawableRight="@drawable/ic_lock_black_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/sign_up"
             android:layout_marginTop="30dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/round_btn_cred"
             android:textColor="@color/cwhite"
             android:paddingRight="20dp"
-            android:text="Login"
+            android:text="Sign up"
             android:drawableRight="@drawable/ic_send_black_24dp"/>
 
-        <LinearLayout
-            android:layout_marginTop="30dp"
+
+        <TextView
+            android:id="@+id/go_back"
+            android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+            android:layout_marginTop="20dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/regester_btn"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:background="@drawable/round_btn_cred_stroke"
-                android:paddingRight="20dp"
-                android:text="Sign up"
-                android:drawableRight="@drawable/ic_account_circle_black_24dp"/>
-
-            <Button
-                android:id="@+id/gmail_btn"
-                android:layout_marginLeft="20dp"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:background="@drawable/round_btn_cyellow_stroke"
-                android:paddingRight="20dp"
-                android:text="Gmail"
-                android:drawableRight="@drawable/ic_mail_yellow_24dp"/>
-
-        </LinearLayout>
-
-
-
-
+            android:text="Already Have an account ."
+            android:gravity=""
+            android:textSize="16dp"/>
 
     </LinearLayout>
+
 </LinearLayout>

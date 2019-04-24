@@ -19,50 +19,50 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ini();
-        events();
+       // ini();
+      //  events();
 
     }
 
    // initialization | attachment
     private void ini() {
 
-        home_btn = findViewById(R.id.home_btn);
-        map_btn = findViewById(R.id.map_btn);
-        about_btn = findViewById(R.id.about_btn);
+       // home_btn = findViewById(R.id.home_btn);
+       // map_btn = findViewById(R.id.map_btn);
+      //  about_btn = findViewById(R.id.about_btn);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.load, new HomeFragment()).commit();
+      //  getSupportFragmentManager().beginTransaction().replace(R.id.load, new HomeFragment()).commit();
 
     }
     // event binding
-    private void events() {
-
-        home_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportActionBar().setTitle("Chuba");
-                getSupportFragmentManager().beginTransaction().replace(R.id.load, new HomeFragment()).commit();
-            }
-        });
-
-        map_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportActionBar().setTitle("Map");
-                getSupportFragmentManager().beginTransaction().replace(R.id.load, new MapFragment()).commit();
-            }
-        });
-
-        about_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportActionBar().setTitle("About Us");
-                getSupportFragmentManager().beginTransaction().replace(R.id.load, new AboutusFragment()).commit();
-            }
-        });
-
-
-    }
+//    private void events() {
+//
+//        home_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getSupportActionBar().setTitle("Chuba");
+//               // getSupportFragmentManager().beginTransaction().replace(R.id.load, new HomeFragment()).commit();
+//            }
+//        });
+//
+//        map_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getSupportActionBar().setTitle("Map");
+//              //  getSupportFragmentManager().beginTransaction().replace(R.id.load, new MapFragment()).commit();
+//            }
+//        });
+//
+//        about_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getSupportActionBar().setTitle("About Us");
+//                //getSupportFragmentManager().beginTransaction().replace(R.id.load, new AboutusFragment()).commit();
+//            }
+//        });
+//
+//
+//    }
 
     // Notifcatin center
     private void notify(String msg){

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_account_70" />
+        <TextView
+            android:paddingTop="5dp"
+            android:drawablePadding="5dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Click the icon to set the profile image"
+            android:drawableLeft="@drawable/ic_info_outline_black_24dp"/>
+
+        <EditText
+            android:id="@+id/full_name"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Full name"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_account_circle_white_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_marginTop="30dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cred"
+            android:textColor="@color/cwhite"
+            android:paddingRight="20dp"
+            android:text="Save"
+            android:drawableRight="@drawable/ic_done_black_24dp"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

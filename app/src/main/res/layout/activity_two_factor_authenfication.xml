@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TwoFactorAuthenficationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_lock_outline_black_24dp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Tow-Step Verification"
+            android:textSize="30dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/phone_number"
+            android:layout_marginTop="40dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Phone number"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_local_phone_black_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:id="@+id/verification"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cgray"
+            android:textSize="14dp"
+            android:hint="Verify code"
+            android:inputType="textEmailAddress"
+            android:drawableRight="@drawable/ic_lock_black_24dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_marginTop="30dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cred"
+            android:textColor="@color/cwhite"
+            android:paddingRight="20dp"
+            android:text="Next"
+            android:drawableRight="@drawable/ic_arrow_forward_white_24dp"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

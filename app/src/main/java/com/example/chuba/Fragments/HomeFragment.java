@@ -1,14 +1,19 @@
 package com.example.chuba.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.chuba.R;
+import com.example.chuba.RegesterActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +34,10 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    private EditText email_field,password_field;
+    private Button regester_btn,login_btn,gmail_btn;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,7 +74,70 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View v =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        email_field  =  v.findViewById(R.id.email_field);
+        password_field  =  v.findViewById(R.id.password_field);
+
+        regester_btn = v.findViewById(R.id.regester_btn);
+        login_btn    = v.findViewById(R.id.login_btn);
+        gmail_btn    = v.findViewById(R.id.gmail_btn);
+
+
+        events();
+
+        return v;
+    }
+
+    private void events(){
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                process_login();
+            }
+        });
+
+        regester_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch_to_regester();
+
+            }
+        });
+
+        gmail_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private void process_login() {
+
+        final String email    = email_field.getText().toString().trim();
+        final String password = password_field.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty())
+        {
+            notify("All fields are required !");
+        }else{
+
+            switch_to_home();
+        }
+    }
+
+    // Notifcatin center
+    private void notify(String msg){
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
+    private void switch_to_regester(){
+        Intent intent = new Intent(getActivity(), RegesterActivity.class);
+        startActivity(intent);
+    }
+    private void switch_to_home(){
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -102,3 +174,4 @@ public class HomeFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
+
