@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,51 +7,62 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="70dp"
-         android:background="@color/cwhite"
-         android:gravity="center"
-         android:orientation="horizontal">
-
-          <Button
-              android:padding="10dp"
-              android:id="@+id/home_btn"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity=""
-              android:layout_marginRight="30dp"
-              android:background="@drawable/round_btn_cred_stroke"
-              android:drawableLeft="@drawable/ic_home_black_24dp"
-              android:text="Home" />
-
-          <Button
-              android:padding="10dp"
-              android:id="@+id/map_btn"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginRight="30dp"
-              android:background="@drawable/round_btn_cred_stroke"
-              android:drawableLeft="@drawable/ic_map_black_24dp"
-              android:text="Map" />
-
-          <Button
-              android:padding="10dp"
-              android:id="@+id/about_btn"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:background="@drawable/round_btn_cred_stroke"
-              android:drawableLeft="@drawable/ic_info_black_24dp"
-              android:text="About Us" />
-
-     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/load"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="match_parent"></FrameLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:background="@color/cgray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/load"
+        android:layout_marginBottom="0dp"
+        android:background="@color/cwhite"
+        android:gravity="center"
+        android:orientation="horizontal">
 
 
 
-</LinearLayout>
+        <Button
+            android:textSize="12dp"
+            android:id="@+id/home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_btn_cwhite_stroke"
+            android:drawableLeft="@drawable/ic_home_black_24dp"
+            android:padding="10dp"
+            android:text="Home" />
+
+        <Button
+            android:textSize="12dp"
+            android:id="@+id/map_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_btn_cwhite_stroke"
+            android:drawableLeft="@drawable/ic_map_black_24dp"
+            android:padding="10dp"
+            android:text="Map" />
+
+        <Button
+            android:textSize="12dp"
+            android:id="@+id/about_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/round_btn_cwhite_stroke"
+            android:drawableLeft="@drawable/ic_info_black_24dp"
+            android:padding="10dp"
+            android:text="About Us" />
+
+    </LinearLayout>
+</RelativeLayout>

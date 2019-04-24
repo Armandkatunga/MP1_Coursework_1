@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:gravity="center"
-            android:textSize="50dp"/>
+            android:textSize="30dp"/>
 
 
         <EditText
@@ -26,7 +26,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@drawable/round_btn_cgray"
-            android:textSize="14dp"
+            android:textSize="12dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:drawableRight="@drawable/ic_mail_white_24dp"
@@ -38,7 +38,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@drawable/round_btn_cgray"
-            android:textSize="14dp"
+            android:textSize="12dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:drawableRight="@drawable/ic_lock_black_24dp"
@@ -54,7 +54,8 @@
             android:textColor="@color/cwhite"
             android:paddingRight="20dp"
             android:text="Login"
-            android:drawableRight="@drawable/ic_send_black_24dp"/>
+            android:drawableRight="@drawable/ic_send_black_24dp"
+            />
 
         <LinearLayout
             android:layout_marginTop="30dp"
@@ -76,10 +77,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:background="@drawable/round_btn_cyellow_stroke"
+                 android:background="@drawable/round_btn_cyellow_stroke"
                 android:paddingRight="20dp"
                 android:text="Gmail"
-                android:drawableRight="@drawable/ic_mail_yellow_24dp"/>
+                android:drawableRight="@drawable/ic_gmail_yellow_24dp"
+                />
 
         </LinearLayout>
 

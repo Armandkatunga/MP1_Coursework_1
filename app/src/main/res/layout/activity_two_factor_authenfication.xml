@@ -42,7 +42,7 @@
 
         <EditText
             android:id="@+id/verification"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@drawable/round_btn_cgray"
@@ -66,6 +66,16 @@
             android:text="Next"
             android:drawableRight="@drawable/ic_arrow_forward_white_24dp"/>
 
+        <Button
+            android:id="@+id/done"
+            android:layout_marginTop="0dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn_cred"
+            android:textColor="@color/cwhite"
+            android:paddingRight="20dp"
+            android:text="Done"
+            android:drawableRight="@drawable/ic_done_black_24dp"/>
 
 
     </LinearLayout>

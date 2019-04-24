@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Sign up"
             android:gravity="center"
-            android:textSize="50dp"/>
+            android:textSize="30dp"/>
 
 
         <EditText

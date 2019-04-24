@@ -1,31 +1,24 @@
 package com.example.chuba.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.chuba.HomeActivity;
 import com.example.chuba.R;
-import com.example.chuba.RegesterActivity;
-import com.example.chuba.TwoFactorAuthenficationActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
+ * {@link indexFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * Use the {@link indexFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class indexFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,11 +30,7 @@ public class HomeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-    private EditText email_field,password_field;
-    private Button regester_btn,login_btn,gmail_btn;
-
-    public HomeFragment() {
+    public indexFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +40,11 @@ public class HomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
+     * @return A new instance of fragment indexFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
+    public static indexFragment newInstance(String param1, String param2) {
+        indexFragment fragment = new indexFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,73 +65,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_home, container, false);
-
-        email_field  =  v.findViewById(R.id.email_field);
-        password_field  =  v.findViewById(R.id.password_field);
-
-        regester_btn = v.findViewById(R.id.regester_btn);
-        login_btn    = v.findViewById(R.id.login_btn);
-        gmail_btn    = v.findViewById(R.id.gmail_btn);
-
-
-        events();
-
-        return v;
-    }
-
-    private void events(){
-
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                process_login();
-            }
-        });
-
-        regester_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch_to_regester();
-
-            }
-        });
-
-        gmail_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
-
-    private void process_login() {
-
-        final String email    = email_field.getText().toString().trim();
-        final String password = password_field.getText().toString().trim();
-
-        if (email.isEmpty() || password.isEmpty())
-        {
-            notify("All fields are required !");
-        }else{
-
-            switch_to_home();
-        }
-    }
-
-    // Notifcatin center
-    private void notify(String msg){
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-    }
-    private void switch_to_regester(){
-        Intent intent = new Intent(getActivity(), RegesterActivity.class);
-        startActivity(intent);
-    }
-    private void switch_to_home(){
-
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        startActivity(intent);
-
+        return inflater.inflate(R.layout.fragment_index, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -179,4 +102,3 @@ public class HomeFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
-
