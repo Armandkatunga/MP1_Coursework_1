@@ -2,8 +2,7 @@ package com.example.chuba;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,17 +13,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.chuba.Fragments.AboutusFragment;
-import com.example.chuba.Fragments.HomeFragment;
-import com.example.chuba.Fragments.MapFragment;
 import com.example.chuba.Fragments.indexFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button home_btn,map_btn,about_btn;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +45,13 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.map);
         navigationView.setNavigationItemSelectedListener(this);
 
         ini();
         events();
+
+        updateUI();
     }
 
 
@@ -58,6 +65,8 @@ public class HomeActivity extends AppCompatActivity
         getSupportActionBar().setTitle("Chuba");
         getSupportFragmentManager().beginTransaction().replace(R.id.load, new indexFragment()).commit();
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
     }
     // event binding
     private void events() {
@@ -145,12 +154,53 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.account) {
 
         } else if (id == R.id.logout) {
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-            startActivity(intent);
+            MapFragment mapFragment= new MapFragment();
+            FragmentManager manager= getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.map,mapFragment).commit();
+            signout();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void updateUI(){
+
+        NavigationView slideOutView = findViewById(R.id.map);
+        View this_ = slideOutView.getHeaderView(0);
+
+        TextView names = this_.findViewById(R.id.user_names);
+        ImageView images = this_.findViewById(R.id.user_profile);
+
+        names.setText(currentUser.getDisplayName());
+
+        Glide.with(this).load(currentUser.getPhotoUrl()).into(images);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user == null) {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void signout() {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user != null) {
+            FirebaseAuth.getInstance().signOut();
+
+        }
+
+        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(intent);
+
+
     }
 }

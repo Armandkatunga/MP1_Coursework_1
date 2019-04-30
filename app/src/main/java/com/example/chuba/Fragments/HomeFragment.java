@@ -1,9 +1,11 @@
 package com.example.chuba.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.chuba.HelpActivity;
 import com.example.chuba.HomeActivity;
 import com.example.chuba.R;
 import com.example.chuba.RegesterActivity;
-import com.example.chuba.TwoFactorAuthenficationActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +47,8 @@ public class HomeFragment extends Fragment {
     private EditText email_field,password_field;
     private Button regester_btn,login_btn,gmail_btn;
 
+    private FirebaseAuth mAuth;
+    private ProgressDialog loader;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -72,6 +80,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,17 +94,25 @@ public class HomeFragment extends Fragment {
         login_btn    = v.findViewById(R.id.login_btn);
         gmail_btn    = v.findViewById(R.id.gmail_btn);
 
+        mAuth = FirebaseAuth.getInstance();
+        loader = new ProgressDialog(this.getActivity());
 
         events();
 
         return v;
     }
 
+
     private void events(){
+
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                loader.setMessage("Processing...");
+                loader.show();
+
                 process_login();
             }
         });
@@ -104,16 +121,17 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 switch_to_regester();
-
             }
         });
 
         gmail_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent= new Intent(getActivity(), HelpActivity.class);
+                startActivity(intent);
             }
         });
+
     }
 
     private void process_login() {
@@ -123,15 +141,31 @@ public class HomeFragment extends Fragment {
 
         if (email.isEmpty() || password.isEmpty())
         {
-            notify("All fields are required !");
+            loader.dismiss();
+            notify_it("All fields are required !");
         }else{
 
-            switch_to_home();
+
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if (task.isSuccessful())
+                    {
+                        loader.dismiss();
+                        switch_to_home();
+                    }else{
+                        loader.dismiss();
+                        notify_it("Incorrect Email or Password");
+                    }
+                }
+            });
+
         }
     }
 
     // Notifcatin center
-    private void notify(String msg){
+    private void notify_it(String msg){
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
     }
     private void switch_to_regester(){

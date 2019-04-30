@@ -1,5 +1,6 @@
 package com.example.chuba;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,11 +9,13 @@ import android.widget.Toast;
 
 import com.example.chuba.Fragments.AboutusFragment;
 import com.example.chuba.Fragments.HomeFragment;
-import com.example.chuba.Fragments.MapFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button home_btn,map_btn,about_btn;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ini();
         events();
 
+
     }
 
    // initialization | attachment
@@ -30,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
         home_btn = findViewById(R.id.home_btn);
         map_btn = findViewById(R.id.map_btn);
         about_btn = findViewById(R.id.about_btn);
-
+        mAuth= FirebaseAuth.getInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.load, new HomeFragment()).commit();
+
+
 
     }
     // event binding
@@ -71,5 +77,17 @@ public class MainActivity extends AppCompatActivity {
     // Redirection
     private  void switchToActivity(){
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user != null) {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
     }
 }

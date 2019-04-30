@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +17,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -28,8 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
     static int REUQEST_CODE = 1 ;
 
     // Img url
-    Uri saveSelectedImgUri;
-
+    Uri saveSelectedImgUri2;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         save       =  findViewById(R.id.save);
         getSupportActionBar().setTitle("Account Profile");
         loader = new ProgressDialog(ProfileActivity.this);
+        mAuth  = FirebaseAuth.getInstance();
     }
 
     private void events() {
@@ -87,11 +99,57 @@ public class ProfileActivity extends AppCompatActivity {
             loader.dismiss();
             notify_it("Provide your full name please !");
         }else{
-            switch_to_home();
+            updateUserInfo(fullNAame,saveSelectedImgUri2,mAuth.getCurrentUser());
         }
-        loader.dismiss();
+
     }
 
+
+    // Associate info for the registered user (Current) : Names and Profile picture
+    private void updateUserInfo(final String names, Uri saveSelectedImgUri, final FirebaseUser currentUser)
+    {
+
+        // Uploading the user image to fire storage and get back the uri
+        StorageReference fire_storage = FirebaseStorage.getInstance().getReference().child("users_photo");
+        final StorageReference imageFilePath = fire_storage.child(saveSelectedImgUri.getLastPathSegment());
+
+        // On upload successfully
+        imageFilePath.putFile(saveSelectedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
+        {
+
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+            {
+                // The image has been successfully uploaded , Getting the Uri back which contain the image URL
+                imageFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                    @Override
+                    public void onSuccess(Uri uri)
+                    {
+                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(names)
+                                .setPhotoUri(uri).build();
+
+                        currentUser.updateProfile(profileUpdate)
+                                .addOnCompleteListener(new OnCompleteListener<Void>(){
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful())
+                                        {
+                                            switch_to_home();
+                                        }else{
+                                            loader.dismiss();
+                                            notify_it("Failed to save user infos");
+                                        }
+                                    }
+                                });
+                    }
+
+                });
+            }
+        });
+
+    }
 
 
 
@@ -135,9 +193,9 @@ public class ProfileActivity extends AppCompatActivity {
         if (resultCode ==RESULT_OK && requestCode == REUQEST_CODE && data != null) {
 
             // Image successfully selected or picked
-            saveSelectedImgUri = data.getData();
+            saveSelectedImgUri2 = data.getData();
             // Showing the selected image on the screen
-            user_img.setImageURI(saveSelectedImgUri);
+            user_img.setImageURI(saveSelectedImgUri2);
 
         }
     }
@@ -158,6 +216,18 @@ public class ProfileActivity extends AppCompatActivity {
         loader.dismiss();
         Intent intent = new Intent(ProfileActivity.this, TwoFactorAuthenficationActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user == null) {
+            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 }
