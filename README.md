@@ -4,7 +4,7 @@ Installation
 
 Clone this repository and import into Android Studio
 
-git clone https://github.com/Armandkatunga/Chub_app.git
+git clone https://github.com/Armandkatunga/Chuba.git
 
 Build variants
 
