@@ -19,5 +19,3 @@ This project is mantained by:
 katunga chubaka armand
 
 Contributing
-
-Fork it Create your feature branch (git checkout -b my-new-feature) Commit your changes (git commit -m 'Add some feature') Run the linter (ruby lint.rb'). Push your branch (git push origin my-new-feature) Create a new Pull Request
