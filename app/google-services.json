@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "713829563040",
+    "firebase_url": "https://chuba-9eefb.firebaseio.com",
+    "project_id": "chuba-9eefb",
+    "storage_bucket": "chuba-9eefb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713829563040:android:0291333711852cb1",
+        "android_client_info": {
+          "package_name": "com.example.chuba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713829563040-4kcm4jqhop4fqbuahtkeucbh6fl2ikkk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chuba",
+            "certificate_hash": "b0ce9794f30793457af784714b259c181c181d7d"
+          }
+        },
+        {
+          "client_id": "713829563040-j90ocqac9ig9fd6lddqvjub5bev8j7jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHWDu4TWB5mZny_39m3uCBH2WzxiLL7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713829563040-j90ocqac9ig9fd6lddqvjub5bev8j7jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
